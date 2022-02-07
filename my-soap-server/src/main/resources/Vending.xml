@@ -1,0 +1,9 @@
+<vend>
+    <origMsisdn>27835000000</origMsisdn>
+    <destMsisdn>27835000001</destMsisdn>
+    <amount>750</amount>
+    <sequence>14</sequence>
+    <tarifftypeId>1</tarifftypeId>
+    <serviceproviderId>1</serviceproviderId>
+    <serviceprovider></serviceprovider>
+</vend>

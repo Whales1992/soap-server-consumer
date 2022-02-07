@@ -1,0 +1,13 @@
+<vendResponse>
+    <StatusId>27835000000</StatusId>
+    <TxRefId>27835000001</TxRefId>
+    <OrigBalance>750</OrigBalance>
+    <DestBalance>750</DestBalance>
+    <OrigMsisdn>750</OrigMsisdn>
+    <DestMsisdn>750</DestMsisdn>
+    <responseCode>750</responseCode>
+    <responseMessage>750</responseMessage>
+    <seqtxRefdId></seqtxRefdId>
+    <seqstatus></seqstatus>
+    <lasseq></lasseq>
+</vendResponse>

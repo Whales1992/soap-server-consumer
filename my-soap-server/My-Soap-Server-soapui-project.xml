@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="b67b356f-4160-4e94-afd7-bb863208e204" activeEnvironment="Default" name="My Soap Server" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="9e7b4684-d5bf-42fd-b67c-8f793951f996" wsaVersion="NONE" name="CountriesPortSoap11" type="wsdl" bindingName="{http://com.guide/soap/server}CountriesPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/countries.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/countries.wsdl"><con:part><con:url>http://localhost:8080/ws/countries.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://com.guide/soap/server" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://com.guide/soap/server" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.guide/soap/server">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://com.guide/soap/server" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getCountryRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCountryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="country" type="tns:country"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllCountryRequest"/>
+      <xs:element name="getAllCountryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="country" type="tns:country"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCountryByCurrencyRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="currency" type="tns:currency"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCountryByCurrencyResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="country" type="tns:country"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="country">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="population" type="xs:int"/>
+          <xs:element name="capital" type="xs:string"/>
+          <xs:element name="currency" type="tns:currency"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="currency">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="GBP"/>
+          <xs:enumeration value="EUR"/>
+          <xs:enumeration value="PLN"/>
+          <xs:enumeration value="AFR"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCountryResponse">
+    <wsdl:part element="tns:getCountryResponse" name="getCountryResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryByCurrencyRequest">
+    <wsdl:part element="tns:getCountryByCurrencyRequest" name="getCountryByCurrencyRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCountryResponse">
+    <wsdl:part element="tns:getAllCountryResponse" name="getAllCountryResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryByCurrencyResponse">
+    <wsdl:part element="tns:getCountryByCurrencyResponse" name="getCountryByCurrencyResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryRequest">
+    <wsdl:part element="tns:getCountryRequest" name="getCountryRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCountryRequest">
+    <wsdl:part element="tns:getAllCountryRequest" name="getAllCountryRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CountriesPort">
+    <wsdl:operation name="getCountry">
+      <wsdl:input message="tns:getCountryRequest" name="getCountryRequest"></wsdl:input>
+      <wsdl:output message="tns:getCountryResponse" name="getCountryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryByCurrency">
+      <wsdl:input message="tns:getCountryByCurrencyRequest" name="getCountryByCurrencyRequest"></wsdl:input>
+      <wsdl:output message="tns:getCountryByCurrencyResponse" name="getCountryByCurrencyResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCountry">
+      <wsdl:input message="tns:getAllCountryRequest" name="getAllCountryRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllCountryResponse" name="getAllCountryResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CountriesPortSoap11" type="tns:CountriesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCountry">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCountryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryByCurrency">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCountryByCurrencyRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryByCurrencyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCountry">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllCountryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountriesPortService">
+    <wsdl:port binding="tns:CountriesPortSoap11" name="CountriesPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="519cba65-4ecc-41dc-be01-003f822c1753" isOneWay="false" action="" name="getCountry" bindingOperationName="getCountry" type="Request-Response" outputName="getCountryResponse" inputName="getCountryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b3ab30c1-d2b3-471e-bb18-2862f79cd60c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://com.guide/soap/server">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getCountryRequest>
+         <ser:name>Nigeria</ser:name>
+      </ser:getCountryRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.guide/soap/server/CountriesPort/getCountryRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="4a21ddff-81d4-4a81-abd0-cad0415859a7" isOneWay="false" action="" name="getAllCountry" bindingOperationName="getAllCountry" type="Request-Response" outputName="getAllCountryResponse" inputName="getAllCountryRequest" receivesAttachments="false" anonymous="optional" sendsAttachments="false"><con:settings/><con:call id="774c6839-ee83-4bda-856a-3345a24dd255" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://com.guide/soap/server">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getAllCountryRequest>?</ser:getAllCountryRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:call><con:call id="29573f40-14c2-4ea4-b6ce-72cdea056f3e" name="Backup of [Request 1]"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://com.guide/soap/server">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getAllCountryResponse>
+         <!--Zero or more repetitions:-->
+         <ser:country>
+            <ser:name>?</ser:name>
+            <ser:population>?</ser:population>
+            <ser:capital>?</ser:capital>
+            <ser:currency>?</ser:currency>
+         </ser:country>
+      </ser:getAllCountryResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.guide/soap/server/CountriesPort/getAllCountryRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="986a00bb-8ae4-4f00-9e20-ce6507f350c5" isOneWay="false" action="" name="getCountryByCurrency" bindingOperationName="getCountryByCurrency" type="Request-Response" outputName="getCountryByCurrencyResponse" inputName="getCountryByCurrencyRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="92b25b0b-7e9f-4b3b-ba84-f882eed52ffe" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://com.guide/soap/server">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getCountryByCurrencyRequest>
+         <ser:currency>AFR</ser:currency>
+      </ser:getCountryByCurrencyRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.guide/soap/server/CountriesPort/getCountryByCurrencyRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

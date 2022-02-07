@@ -1,0 +1,21 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://com.guide/soap/server"
+           targetNamespace="http://com.guide/soap/server" elementFormDefault="qualified">
+
+<xs:element name="vendResponse">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element type="xs:string" name="StatusId"/>
+      <xs:element type="xs:string" name="TxRefId"/>
+      <xs:element type="xs:string" name="OrigBalance"/>
+      <xs:element type="xs:string" name="DestBalance"/>
+      <xs:element type="xs:string" name="OrigMsisdn"/>
+      <xs:element type="xs:string" name="DestMsisdn"/>
+      <xs:element type="xs:string" name="responseCode"/>
+      <xs:element type="xs:string" name="responseMessage"/>
+      <xs:element type="xs:string" name="seqtxRefdId" minOccurs="0"/>
+      <xs:element type="xs:string" name="seqstatus" minOccurs="0"/>
+      <xs:element type="xs:string" name="lasseq" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+</xs:schema>
